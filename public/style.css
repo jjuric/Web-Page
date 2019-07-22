@@ -1,0 +1,104 @@
+.navbar {
+  padding: .5rem;
+}
+.navbar-nav li {
+  padding-right: 1rem;
+}
+.nav-link {
+  font-size: 18px;
+}
+.jumbotron {
+  padding: 1rem;
+  border-radius: 0;
+}
+.jumbotron h1 {
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.banner-container {
+  padding: 10px;
+}
+.founders {
+  width: 75%;
+  padding-bottom: 15px;
+}
+.social {
+  padding: 5px;
+  font-size: 50px;
+}
+.fa {
+  color: #d5d5d5;
+}
+footer {
+  padding-top: 20px;
+  background-color: #3f3f3f;
+  color: #d5d5d5;
+}
+hr.light {
+  border-top: 1px solid #d5d5d5;
+  width: 75%;
+}
+hr.lightcopyright {
+  border-top: 1px solid #d5d5d5;
+  width: 100%;
+}
+.article {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 70%;
+  border-radius: 15px;
+}
+.addArticle {
+  padding: 5px;
+  right: 5px;
+  position: absolute;
+}
+.brandLogo {
+  max-height: 40px;
+}
+/*---Media Queries --*/
+@media (max-width: 992px) {
+  .card-text {
+    font-size: 12px;
+  }
+  .jumbotron p {
+    font-size: 15px;
+  }
+  .jumbotron a {
+    font-size: 15px;
+  }
+  footer p {
+    font-size: 12px;
+  }
+  .social {
+    font-size: 40px;
+  }
+}
+@media (max-width: 768px) {
+  .card-text {
+    font-size: 12px;
+  }
+  .card-text {
+    font-size: 12px;
+  }
+  .jumbotron p {
+    font-size: 15px;
+  }
+  .jumbotron a {
+    font-size: 15px;
+  }
+  footer p {
+    font-size: 12px;
+  }
+  .social {
+    font-size: 40px;
+  }
+}
+@media (max-width: 576px) {
+  .card-text {
+    font-size: 12px;
+  }
+  footer h5 {
+    font-size: 15px;
+  }
+}

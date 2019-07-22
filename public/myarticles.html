@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Streamer website</title>
+  </head>
+  <body>
+    <!-- Navigation bar setup -->
+    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+        <a href="/index.html" class="navbar-brand"><img class="img-fluid brandLogo" src="/Images/logo.png"></a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navigationItems">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navigationItems">
+            <ul class="navbar-nav">
+                <li class="nav-item " ><a href="/articles.html" class="nav-link">Articles</a></li>
+                <li class="nav-item " ><a href="/stream.html" class="nav-link">Stream</a></li>
+                <li class="nav-item logged-in" style="display: none;"><a href="#" class="nav-link" data-toggle="modal" data-target="#profileModal">Profile</a></li>
+                <li class="nav-item logged" style="display: none;"><a href="#" class="nav-link" data-toggle="modal" data-target="#loginModal">Sign In</a></li>
+                <li class="nav-item logged-in" style="display: none;"><a href="/myarticles.html" class="nav-link">My articles</a></li>
+                <li class="nav-item logged-in" style="display: none;"><a href="#" class="nav-link" id="logout">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+     <!-- My Articles section -->
+     <div class="container myarticles text-center">
+        
+    </div>
+    <!-- Login modal view -->
+    <div class="modal fade" role="dialog" id="loginModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">Log in</h3>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <input type="email" id="login-email" class="form-control" placeholder="E-mail" required>
+            </div>
+            <div class="form-group">
+              <input type="password" id="login-password" class="form-control" placeholder="Password" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success" id="login-btn">Log in</button>
+            <button type="button" class="btn btn-outline-dark signupBtn" data-toggle="modal" data-target="#signupModal">Sign up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Signup modal view -->
+    <div class="modal fade" role="dialog" id="signupModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">Sign up</h3>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <input type="email" id="signup-email" class="form-control" placeholder="E-mail" required>
+            </div>
+            <div class="form-group">
+              <input type="password" id="signup-password" class="form-control" placeholder="Password" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success" id="signup-btn">Sign up</button>
+          </div>
+          <div class="modal-footer">
+            <p>Already have an account? <a href="#" class="loginLink" data-toggle="modal" data-target="#loginModal">LOG IN</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Profile modal view -->
+    <div class="modal fade" role="dialog" id="profileModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title">Profile information</h3>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="account-details text-center"></div>
+                <hr>
+                <div class="form-group">
+                    <input type="email" id="change-email" class="form-control" placeholder="E-mail">
+                    <br>
+                    <button type="submit" class="btn btn-success" id="change-btn">Change e-mail</button>
+                    <button type="submit" class="btn btn-danger" id="change-btn" onclick="deleteUser()">Delete account</button>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <!-- Firebase setup -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyC8k_Nag_AeJ-n01UlNSDWM5V4IbQ96G5Q",
+        authDomain: "webprogramiranje-a0e5e.firebaseapp.com",
+        databaseURL: "https://webprogramiranje-a0e5e.firebaseio.com",
+        projectId: "webprogramiranje-a0e5e",
+        storageBucket: "webprogramiranje-a0e5e.appspot.com",
+        messagingSenderId: "808204625777",
+        appId: "1:808204625777:web:1a01761d0a7136cd"
+      };
+      firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+    </script>
+    <!-- jquery, bootstrap, local scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="/Scripts/index.js"></script>
+    <script src="/Scripts/auth.js"></script>
+    <script src="/Scripts/myarticles.js"></script>
+  </body>
+</html>

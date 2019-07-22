@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Streamer website</title>
+  </head>
+  <body>
+    <!-- Navigation bar setup -->
+    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+        <a href="index.html" class="navbar-brand"><img class="img-fluid brandLogo" src="/Images/logo.png"></a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navigationItems">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navigationItems">
+            <ul class="navbar-nav">
+                <li class="nav-item " ><a href="/articles.html" class="nav-link">Articles</a></li>
+                <li class="nav-item " ><a href="/stream.html" class="nav-link">Stream</a></li>
+                <li class="nav-item logged-in" style="display: none;"><a href="#" class="nav-link" data-toggle="modal" data-target="#profileModal">Profile</a></li>
+                <li class="nav-item logged" style="display: none;"><a href="#" class="nav-link" data-toggle="modal" data-target="#loginModal">Sign In</a></li>
+                <li class="nav-item logged-in" style="display: none;"><a href="/myarticles.html" class="nav-link">My articles</a></li>
+                <li class="nav-item logged-in" style="display: none;"><a href="#" class="nav-link" id="logout">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Image header -->
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-10 mx-auto text-center banner-container">
+            <img src="/Images/banner.png" class="img-fluid">
+          </div>
+        </div>
+    </div>
+    <!-- Login modal view -->
+    <div class="modal fade" role="dialog" id="loginModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">Log in</h3>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <input type="email" id="login-email" class="form-control" placeholder="E-mail" required>
+            </div>
+            <div class="form-group">
+              <input type="password" id="login-password" class="form-control" placeholder="Password" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success" id="login-btn">Log in</button>
+            <button type="button" class="btn btn-outline-dark signupBtn" data-toggle="modal" data-target="#signupModal">Sign up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Signup modal view -->
+    <div class="modal fade" role="dialog" id="signupModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">Sign up</h3>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <input type="email" id="signup-email" class="form-control" placeholder="E-mail" required>
+            </div>
+            <div class="form-group">
+              <input type="password" id="signup-password" class="form-control" placeholder="Password" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success" id="signup-btn">Sign up</button>
+          </div>
+          <div class="modal-footer">
+            <p>Already have an account? <a href="#" class="loginLink" data-toggle="modal" data-target="#loginModal">LOG IN</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Profile modal view -->
+    <div class="modal fade" role="dialog" id="profileModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title">Profile information</h3>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="account-details text-center"></div>
+                <hr>
+                <div class="form-group">
+                    <input type="email" id="change-email" class="form-control" placeholder="E-mail">
+                    <br>
+                    <button type="submit" class="btn btn-success" id="change-btn">Change e-mail</button>
+                    <button type="submit" class="btn btn-danger" id="change-btn" onclick="deleteUser()">Delete account</button>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- Jumbotron + "Join us" button -->
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+          <h1 class="display-4">Who are we?</h1>
+          <p class="lead">Relaxed gaming is a community of gamers that love unwinding from life with games</p>
+          <hr class="my-4">
+          <p>Whether it is board games, console or PC games, we love playing them. If you want to see our gameplay, hear our thoughts about games or simply just relax and talk to like minded people, join the community and follow our stream. Oh, and sometimes we also like to talk about programming/developing!</p>
+          <p class="lead">
+            <a class="btn btn-outline-dark btn-lg" href="#" role="button" data-toggle="modal" data-target="#signupModal">Join the family</a>
+          </p>
+      </div>
+    </div>
+    <!-- Founders -->
+    <div class="container-fluid">
+      <div class="row text-center">
+        <div class="col-12">
+          <h1 class="display-4">The Founders</h1>
+          <hr>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid founders">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <img class="card-img-top" src="/Images/cardProfile.jpg" alt="profilePicture">
+            <div class="card-body">
+              <h5 class="card-title">Jakov Jurić</h5>
+              <p class="card-text">Jakov is one of the streamers and the guy whose idea was to start Relaxed Gaming. With the help of his friends/co-founders they created the brand and the rest is history. He is not only a gamer but also a mobile developer and full time student.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img class="card-img-top" src="/Images/cardProfile.jpg" alt="profilePicture">
+            <div class="card-body">
+              <h5 class="card-title">Elon Musk</h5>
+              <p class="card-text">Elon is a full-time streamer and he streams the most out of the original founders. He doesn't do much else besides game and talk about some crazy ideas about space. Nonetheless, he is a fun, cool guy with a wild imagination.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img class="card-img-top" src="/Images/cardProfile.jpg" alt="profilePicture">
+            <div class="card-body">
+              <h5 class="card-title">Ante Bartulović</h5>
+              <p class="card-text">Ante is the manager of Relaxed Gaming, successful student and Android developer. He is proficient in economics so he also takes care of our taxes. He/s rarely on stream, but when he drops by laughter is ensured.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer setup -->
+    <footer>
+      <div class="container-fluid">
+        <div class="row text-center">
+          <div class="col-md-4">
+            <hr class="light">
+            <h5>Contact and socials</h5>
+            <hr class="light">
+            <p>support@relaxedgaming.com</p>
+            <a href="https://www.facebook.com/jakov.juric4" target="_blank"><i class="fa fa-facebook-square social"></i></a>
+            <a href="https://github.com/jjuric" target="_blank"><i class="fa fa-github-square social"></i></a>
+            <a href="https://steamcommunity.com/profiles/76561198107160261/" target="_blank"><i class="fa fa-steam-square social"></i></a>
+            <a href="https://twitch.tv/jayy4" target="_blank"><i class="fa fa-twitch social"></i></a>            
+          </div>
+          <div class="col-md-4">
+            <hr class="light">
+            <h5>Stream schedule</h5>
+            <hr class="light">
+            <p>Monday: 8am-2pm</p>
+            <p>Tuesday: 8am-2pm</p>
+            <p>Thursday: 8am-2pm</p>
+            <p>Friday: 24h charity stream</p>
+          </div>
+          <div class="col-md-4">
+            <hr class="light">
+            <h5>Upcoming events</h5>
+            <hr class="light">
+            <p>24th December: Christmas special</p>
+            <p>12th April: Easter giveaway</p>
+            <p>? May: Secret giveaway</p>
+          </div>
+          <div class="col-12">
+              <hr class="lightcopyright">
+              <h6>&copy; Jakov Jurić</h6>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Firebase setup -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyC8k_Nag_AeJ-n01UlNSDWM5V4IbQ96G5Q",
+        authDomain: "webprogramiranje-a0e5e.firebaseapp.com",
+        databaseURL: "https://webprogramiranje-a0e5e.firebaseio.com",
+        projectId: "webprogramiranje-a0e5e",
+        storageBucket: "webprogramiranje-a0e5e.appspot.com",
+        messagingSenderId: "808204625777",
+        appId: "1:808204625777:web:1a01761d0a7136cd"
+      };
+      firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+    </script>
+    <!-- jquery, bootstrap, local scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="/Scripts/index.js"></script>
+    <script src="/Scripts/auth.js"></script>
+  </body>
+</html>
